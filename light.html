@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+	<meta charset="UTF-8">
+	<title>探照灯</title>
+	<style>
+		* {
+			padding: 0;
+			margin: 0;
+		}
+	</style>
+</head>
+<body>
+	<canvas id="canvas" style="display: block;margin: 0 auto;">
+	</canvas>
+	<script type="text/javascript">
+
+		var aBall;
+
+		window.onload = function() {
+
+			var canvas = document.getElementById("canvas");
+			canvas.width = document.documentElement.clientWidth - 2;
+			canvas.height = document.documentElement.clientHeight - 2;
+			var context = canvas.getContext("2d");
+
+			context.beginPath();
+			context.fillRect(0, 0, canvas.width, canvas.height);
+			context.closePath();
+
+
+			var radius = 80;
+			aBall = {
+				color: "white",
+				radius: radius,
+				x: 200,
+				y: 200,
+				vx: (Math.random() * 5 + 5) * Math.pow(-1, Math.floor(Math.random() * 100)),
+				vy: (Math.random() * 5 + 5) * Math.pow(-1, Math.floor(Math.random() * 100))
+			}
+
+			
+			setInterval(function() {
+				draw( context );
+				update(canvas.width, canvas.height);
+			}, 50);
+		}
+
+		function draw(context) {	
+
+
+			var canvas = context.canvas;
+			context.clearRect(0, 0, canvas.width, canvas.height);
+
+			context.save();
+
+			// 绘制矩形
+			context.beginPath();
+			context.fillRect(0, 0, canvas.width, canvas.height);
+			context.closePath();
+
+			// 绘制圆
+			context.beginPath();
+			context.arc(aBall.x, aBall.y, aBall.radius, 0, 2*Math.PI);
+			context.fillStyle = "white";
+			context.fill();
+			context.clip();
+			context.font = "bold 250px Arial";
+			context.textAlign = "center";
+			context.textBaseline = "middle";
+			context.fillStyle = "#058";
+			context.fillText("CANVAS", canvas.width / 2, canvas.height / 2);
+			context.closePath();
+
+			context.restore();
+		}
+
+		function update(width, height) {
+
+				if(aBall.vx == 0) {
+					aBall.vx = Math.random() * 5 + 5 * Math.pow(-1, Math.floor(Math.random() * 100));
+				} 
+				if(aBall.vy == 0) {
+					aBall.vy = Math.random() * 5 + 5 * Math.pow(-1, Math.floor(Math.random() * 100));
+				}
+
+				aBall.x += aBall.vx;
+				aBall.y += aBall.vy;
+
+				if(aBall.x - aBall.radius <= 0) {
+					aBall.vx = -aBall.vx - 2;
+					aBall.x = aBall.radius;
+				}
+
+				if(aBall.x + aBall.radius >= width) {
+					aBall.vx = -aBall.vx;
+					aBall.x = width - aBall.radius;
+				}
+
+				if(aBall.y - aBall.radius <= 0 ){
+					aBall.vy = -aBall.vy;
+					aBall.y = aBall.radius;
+				}
+
+				if(aBall.y + aBall.radius >= height ) {
+					aBall.vy = -aBall.vy;
+					aBall.y = height - aBall.radius;
+				}
+		}
+
+	</script>
+</body>
+</html>
