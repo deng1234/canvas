@@ -6,7 +6,7 @@
 ## 项目图片
 
 ![image](https://github.com/deng1234/canvas/blob/master/img/clock.png)
-![image](https://github.com/deng1234/canvas/blob/master/_image/guess.png)
-![image](https://github.com/deng1234/canvas/blob/master/_image/light.png)
-![image](https://github.com/deng1234/canvas/blob/master/_image/screen.png)
-![image](https://github.com/deng1234/canvas/blob/master/_image/time.png)
+![image](https://github.com/deng1234/canvas/blob/master/img/guess.png)
+![image](https://github.com/deng1234/canvas/blob/master/img/light.png)
+![image](https://github.com/deng1234/canvas/blob/master/img/screen.png)
+![image](https://github.com/deng1234/canvas/blob/master/img/time.png)
